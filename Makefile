@@ -1,7 +1,9 @@
 shell: shell.o
-	gcc -o shell shell.o -lm
-	rm -f shell.o
-shell.o: shell.c
-	gcc -c shell.c
+	gcc -o $@ $^ -lm
+
+%.o: %.c
+	gcc -c $< -o $@
+
+.PTHONY: clean
 clean: 
-	rm -f shell
+	rm -f shell *.o 
